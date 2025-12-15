@@ -95,7 +95,11 @@ EOF
     if systemctl --user is-active --quiet "flow-plane-link@${DATA_PLANE}.service"; then
         echo "flow-plane-link@${DATA_PLANE} already running, skipping"
     else
-        systemctl --user start "flow-plane-link@${DATA_PLANE}.service"
+        if ! systemctl --user start "flow-plane-link@${DATA_PLANE}.service"; then
+            echo "flow-plane-link@${DATA_PLANE} failed to start. Logs:"
+            journalctl --user -u "flow-plane-link@${DATA_PLANE}.service" --no-pager
+            exit 1
+        fi
     fi
 fi
 
