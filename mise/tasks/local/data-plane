@@ -91,7 +91,12 @@ EOF
     fi
 
     systemctl --user daemon-reload
-    systemctl --user start "flow-plane-link@${DATA_PLANE}.service"
+
+    if systemctl --user is-active --quiet "flow-plane-link@${DATA_PLANE}.service"; then
+        echo "flow-plane-link@${DATA_PLANE} already running, skipping"
+    else
+        systemctl --user start "flow-plane-link@${DATA_PLANE}.service"
+    fi
 fi
 
 STATUS="systemctl --user list-dependencies flow-plane@${DATA_PLANE}.target"
