@@ -2,7 +2,7 @@
 set -euo pipefail
 
 #MISE description="Run Dekaf E2E tests"
-#MISE depends=["local:stack", "local:test-tenant", "local:dekaf"]
+#MISE depends=["local:test-tenant", "local:dekaf"]
 #USAGE flag "--filter <filter>" help="Test filter pattern for nextest"
 #USAGE flag "--update-snapshots" help="Update insta snapshots"
 

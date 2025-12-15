@@ -2,7 +2,6 @@
 set -euo pipefail
 
 #MISE description="Provision test/ tenant for integration tests"
-#MISE depends=["local:stack"]
 
 # This script idempotently provisions the test/ tenant with:
 # 1. Storage mappings pointing to the local data plane
