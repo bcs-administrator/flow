@@ -25,6 +25,8 @@ if ! grep -q "mise" "${HOME}/.bashrc"; then
 source <(cd $(pwd) && ~/.local/bin/mise activate bash)
 source <(cd $(pwd) && ~/.local/bin/mise completion bash --include-bash-completion-lib)
 
+echo 'export PATH="$HOME/cargo-target/debug:$HOME/cargo-target/release:$PATH"' >> "${HOME}/.bashrc"
+
 EOF
 fi
 
