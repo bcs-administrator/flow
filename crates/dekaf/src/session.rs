@@ -763,6 +763,7 @@ impl Session {
                         )
                         .increment(1);
                         tracing::debug!(collection = ?&key.0, "Collection doesn't exist!");
+                        self.reads.remove(&key);
                         continue;
                     }
                     CollectionStatus::NotReady { .. } => {
@@ -775,6 +776,7 @@ impl Session {
                         )
                         .increment(1);
                         tracing::debug!(collection = ?&key.0, "Collection not ready (no journals)");
+                        self.reads.remove(&key);
                         continue;
                     }
                 };
